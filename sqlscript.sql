@@ -11,6 +11,7 @@ CREATE TABLE [Adopters]( -- adopters table
 	adopt_LName varchar(50) NOT NULL, -- LAST NAME, cant be null
 	adopt_Addr1 varchar(50) NOT NULL, -- address 1, cant be null
 	adopt_Addr2 varchar(50) NOT NULL, -- address 2, cant be null
+  adopt_Email varchar(50) NOT NULL, -- email address, cant be null
 	adopt_PhoneNum varchar(50) NOT NULL, -- phone number, cant be null
 	news_ID_FK int NOT NULL, -- news foreign key, cant be null
 	adopt_Em_PhoneNum date NOT NULL, -- emergency contact phone number, cant be null
