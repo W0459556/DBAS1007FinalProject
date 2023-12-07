@@ -85,7 +85,7 @@ VALUES
 ('Abby','Smith','1 Park St','427 Boat Ln','AbbySmith@gmail.com','999-888-1010','1','888-999-1010','Ethan','Parker'),
 ('Ethan','Wilson','2 Park St','428 Sunflower Ln','EthanWilson@gmail.com','999-888-1011','2','888-999-1011','Beatrice','Kent'),
 ('Beatrice','Parker','3 Park St','429 Boat Ln','BeatriceParker@gmail.com','999-888-1100','1','888-999-1012','William','Grayson'),
-('William','Kent','4 Park St','430 Leeds Ln','WilliamKent@gmail.com','3','999-888-1101','888-999-1013','Richard','Smith'),
+('William','Kent','4 Park St','430 Leeds Ln','WilliamKent@gmail.com','999-888-1101','3','888-999-1013','Richard','Smith'),
 ('Richard','Grayson','5 Park St','431 Boat Ln','RichardGrayson@gmail.com','999-888-1111','1','888-999-1014','Abby','Wilson');
 
 INSERT INTO Adoption(adopt_ID_FK,cat_Name_FK,ad_Date,shelter_Name_FK)
