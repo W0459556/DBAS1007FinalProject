@@ -80,7 +80,7 @@ VALUES
 ('Dartmouth','889 Industry St'),
 ('Truro','461 Park St');
 
-INSERT INTO Adopters(adopt_FName,adopt_LName,adopt_Addr1,adopt_Addr2,adopt_Email,adopt_PhoneNum,news_ID_FK,adopt_PhoneNum,adopt_Em_FName,adopt_Em_LName)
+INSERT INTO Adopters(adopt_FName,adopt_LName,adopt_Addr1,adopt_Addr2,adopt_Email,adopt_PhoneNum,news_ID_FK,adopt_Em_PhoneNum,adopt_Em_FName,adopt_Em_LName)
 VALUES
 ('Abby','Smith','1 Park St','427 Boat Ln','AbbySmith@gmail.com','999-888-1010','1','888-999-1010','Ethan','Parker'),
 ('Ethan','Wilson','2 Park St','428 Sunflower Ln','EthanWilson@gmail.com','999-888-1011','2','888-999-1011','Beatrice','Kent'),
