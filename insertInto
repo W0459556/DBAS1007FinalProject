@@ -1,0 +1,8 @@
+INSERT INTO Cat(cat_Name,cat_FurLength,cat_FurColour,cat_Age,cat_FriendlyKids,cat_FriendlyAnimals,cat_Healthy,)
+VALUES
+('Stewart','Long','Orange','1','1','1','1'),
+('Fluffy','Long','Grey','4','1','0','1'),
+('Whiskers','Short','Brown','2','0','1','1'),
+('Mr. Meow','Medium','Black','7','1','0','0'),
+('Jazzy','Short','White','2','1','1','1'),
+('Berry','Medium','Grey','1','1','1','0');
