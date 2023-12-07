@@ -58,3 +58,40 @@ ADD FOREIGN KEY (cat_Name_FK) REFERENCES Cat(cat_Name); -- links adoption table 
 
 ALTER TABLE [Adoption] -- alter Adoption to add fk
 ADD FOREIGN KEY (shelter_Name_FK) REFERENCES Shelters(shelter_Name); -- links adoption table to location from which the cat is being adopted
+
+INSERT INTO Cat(cat_Name,cat_FurLength,cat_FurColour,cat_Age,cat_FriendlyKids,cat_FriendlyAnimals,cat_Healthy)
+VALUES
+('Stewart','Long','Orange','1','1','1','1'),
+('Fluffy','Long','Grey','4','1','0','1'),
+('Whiskers','Short','Brown','2','0','1','1'),
+('Mr. Meow','Medium','Black','7','1','0','0'),
+('Jazzy','Short','White','2','1','1','1'),
+('Berry','Medium','Grey','1','1','1','0');
+
+INSERT INTO Newsletters(news_Name)
+VALUES
+('Cats'),
+('Dogs'),
+('Both');
+
+INSERT INTO Shelters(shelter_Name,shelter_Address)
+VALUES
+('Halifax','466 Halifax St'),
+('Dartmouth','889 Industry St'),
+('Truro','461 Park St');
+
+INSERT INTO Adopters(adopt_FName,adopt_LName,adopt_Addr1,adopt_Addr2,adopt_Email,news_ID_FK,adopt_PhoneNum,adopt_Em_FName,adopt_Em_LName)
+VALUES
+('Abby','Smith','1 Park St','427 Boat Ln','AbbySmith@gmail.com','1','888-999-1010','Ethan','Parker'),
+('Ethan','Wilson','2 Park St','428 Sunflower Ln','EthanWilson@gmail.com','2','888-999-1011','Beatrice','Kent'),
+('Beatrice','Parker','3 Park St','429 Boat Ln','BeatriceParker@gmail.com','1','888-999-1012','William','Grayson'),
+('William','Kent','4 Park St','430 Leeds Ln','WilliamKent@gmail.com','3','888-999-1013','Richard','Smith'),
+('Richard','Grayson','5 Park St','431 Boat Ln','RichardGrayson@gmail.com','1','888-999-1014','Abby','Wilson');
+
+INSERT INTO Adoption(adopt_ID_FK,cat_Name_FK,ad_Date,shelter_Name_FK)
+VALUES
+('1','Stewart','2023-11-28','Halifax'),
+('2','Jazzy','2023-10-01','Dartmouth'),
+('3','Whiskers','2023-11-11','Truro'),
+('4','Stewart','2023-11-30','Halifax'),
+('5','Berry','2023-12-01','Truro');
