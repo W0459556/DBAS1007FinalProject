@@ -29,7 +29,7 @@ CREATE TABLE [Adoption]( -- adopters table
     adopt_ID_FK int NOT NULL, -- adopter id foreign key
     cat_Name_FK varchar(50) NOT NULL, -- name of cat theyre choosing 
     ad_Date date NOT NULL, -- date of adoption, cant be null
-    shelter_ID_FK int NOT NULL, --changed this from the framework- makes more sense for there to be information about what shelter the cat is being adopted from here, change if necessary
+    shelter_Name_FK varchar(50) NOT NULL, --changed this from the framework- makes more sense for there to be information about what shelter the cat is being adopted from here, change if necessary
 );
 
 CREATE TABLE [Cat]( -- adopters table
@@ -57,4 +57,4 @@ ALTER TABLE [Adoption] -- alter Adoption to add fk
 ADD FOREIGN KEY (cat_Name_FK) REFERENCES Cat(cat_Name); -- links adoption table to name of cat being adopted
 
 ALTER TABLE [Adoption] -- alter Adoption to add fk
-ADD FOREIGN KEY (shelter_ID_FK) REFERENCES Shelters(shelter_ID); -- links adoption table to location from which the cat is being adopted
+ADD FOREIGN KEY (shelter_Name_FK) REFERENCES Shelters(shelter_Name); -- links adoption table to location from which the cat is being adopted
