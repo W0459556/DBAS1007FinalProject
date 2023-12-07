@@ -43,7 +43,7 @@ CREATE TABLE [Cat]( -- adopters table
 );
 
 CREATE TABLE [Shelters]( -- adopters table
-    shelter_Name varchar(50) NOT NULL PRIMARY KEY,, -- name of the shelter
+    shelter_Name varchar(50) NOT NULL PRIMARY KEY, -- name of the shelter
     shelter_Address varchar(50) NOT NULL, -- address of the shelter, only one- change if necessary
 );
 
