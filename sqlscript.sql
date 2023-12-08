@@ -22,6 +22,9 @@ CREATE TABLE [Adopters]( -- adopters table
 CREATE TABLE [Newsletters]( -- adopters table
   news_Name varchar(50) NOT NULL PRIMARY KEY, -- name of the newsletter, primary key
   news_ID int NOT NULL IDENTITY(1,1), -- news ID
+  news_Email varchar(50) NOT NULL, --email the newsletters will be sent from
+  news_Frequency int NOT NULL, --how many days between releases
+  news_Telemetry bit, --does the newsletter share your email with other newsletters
 );
 
 CREATE TABLE [Adoption]( -- adopters table
@@ -66,13 +69,14 @@ VALUES
 ('Whiskers','Short','Brown','2','0','1','1'),
 ('Mr. Meow','Medium','Black','7','1','0','0'),
 ('Jazzy','Short','White','2','1','1','1'),
-('Berry','Medium','Grey','1','1','1','0');
+('Berry','Medium','Grey','1','1','1','0'),
+('Quiet','Short','Black','4','1','0','1');
 
-INSERT INTO Newsletters(news_Name)
+INSERT INTO Newsletters(news_Name,news_Email,news_Frequency,news_Telemetry)
 VALUES
-('Cats'),
-('Dogs'),
-('Both');
+('Catatonic over Cats','catatonic@cat.li','7','0'),
+('Dogged about Dogs','bigdogofficial@hotmail.com','1','1'),
+('Doggedly Catatonic about Cats and Dogs','legalizedogbiscuits@gmail.com','3','1');
 
 INSERT INTO Shelters(shelter_Name,shelter_Address)
 VALUES
