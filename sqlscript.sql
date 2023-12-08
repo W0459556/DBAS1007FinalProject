@@ -11,17 +11,17 @@ CREATE TABLE [Adopters]( -- adopters table
 	adopt_LName varchar(50) NOT NULL, -- LAST NAME, cant be null
 	adopt_Addr1 varchar(50) NOT NULL, -- address 1, cant be null
 	adopt_Addr2 varchar(50) NOT NULL, -- address 2, cant be null
-    adopt_Email varchar(50) NOT NULL, -- email address, cant be null
+  adopt_Email varchar(50) NOT NULL, -- email address, cant be null
 	adopt_PhoneNum varchar(50) NOT NULL, -- phone number, cant be null
-	news_ID_FK int NOT NULL, -- news foreign key, cant be null
+	news_Name_FK varchar(50) NOT NULL, -- news foreign key, cant be null
 	adopt_Em_PhoneNum varchar(50) NOT NULL, -- emergency contact phone number, cant be null
 	adopt_Em_FName varchar(50) NOT NULL, -- emergency contact FIRST NAME, cant be null
 	adopt_Em_LName varchar(50) NOT NULL, -- emergency contact LAST NAME, cant be null
 );
 
 CREATE TABLE [Newsletters]( -- adopters table
-	news_ID int NOT NULL IDENTITY(1,1) PRIMARY KEY, -- the ID, which is the Primary Key, cant be null. duh
-    news_Name varchar(50) NOT NULL, -- name of the newsletter
+  news_Name varchar(50) NOT NULL PRIMARY KEY, -- name of the newsletter, primary key
+  news_ID int NOT NULL IDENTITY(1,1), -- news ID
 );
 
 CREATE TABLE [Adoption]( -- adopters table
@@ -48,7 +48,7 @@ CREATE TABLE [Shelters]( -- adopters table
 );
 
 ALTER TABLE [Adopters] -- alter Adopters to add fk
-ADD FOREIGN KEY (news_ID_FK) REFERENCES Newsletters(news_ID); -- links newsletter foreign key to adopters table
+ADD FOREIGN KEY (news_Name_FK) REFERENCES Newsletters(news_Name); -- links newsletter foreign key to adopters table
 
 ALTER TABLE [Adoption] -- alter Adoption to add fk
 ADD FOREIGN KEY (adopt_ID_FK) REFERENCES Adopters(adopt_ID); -- links adoption table to the id of the adopter
@@ -82,11 +82,11 @@ VALUES
 
 INSERT INTO Adopters(adopt_FName,adopt_LName,adopt_Addr1,adopt_Addr2,adopt_Email,adopt_PhoneNum,news_ID_FK,adopt_Em_PhoneNum,adopt_Em_FName,adopt_Em_LName)
 VALUES
-('Abby','Smith','1 Park St','427 Boat Ln','AbbySmith@gmail.com','999-888-1010','1','888-999-1010','Ethan','Parker'),
-('Ethan','Wilson','2 Park St','428 Sunflower Ln','EthanWilson@gmail.com','999-888-1011','2','888-999-1011','Beatrice','Kent'),
-('Beatrice','Parker','3 Park St','429 Boat Ln','BeatriceParker@gmail.com','999-888-1100','1','888-999-1012','William','Grayson'),
-('William','Kent','4 Park St','430 Leeds Ln','WilliamKent@gmail.com','999-888-1101','3','888-999-1013','Richard','Smith'),
-('Richard','Grayson','5 Park St','431 Boat Ln','RichardGrayson@gmail.com','999-888-1111','1','888-999-1014','Abby','Wilson');
+('Abby','Smith','1 Park St','427 Boat Ln','AbbySmith@gmail.com','999-888-1010','Cats','888-999-1010','Ethan','Parker'),
+('Ethan','Wilson','2 Park St','428 Sunflower Ln','EthanWilson@gmail.com','999-888-1011','Dogs','888-999-1011','Beatrice','Kent'),
+('Beatrice','Parker','3 Park St','429 Boat Ln','BeatriceParker@gmail.com','999-888-1100','Cats','888-999-1012','William','Grayson'),
+('William','Kent','4 Park St','430 Leeds Ln','WilliamKent@gmail.com','999-888-1101','Both','888-999-1013','Richard','Smith'),
+('Richard','Grayson','5 Park St','431 Boat Ln','RichardGrayson@gmail.com','999-888-1111','Cats','888-999-1014','Abby','Wilson');
 
 INSERT INTO Adoption(adopt_ID_FK,cat_Name_FK,ad_Date,shelter_Name_FK)
 VALUES
