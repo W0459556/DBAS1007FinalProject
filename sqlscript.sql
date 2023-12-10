@@ -1,66 +1,66 @@
-USE [master] -- creates it in master 
-CREATE DATABASE [CAT_ADOPTION] -- creates the database
-GO -- executes it 
+USE [master]
+CREATE DATABASE [CAT_ADOPTION]
+GO
 
-USE [CAT_ADOPTION] -- moves over to new database
-GO -- executes it
+USE [CAT_ADOPTION]
+GO
 
-CREATE TABLE [Adopters]( -- adopters table
-	adopt_ID int NOT NULL IDENTITY(1,1) PRIMARY KEY, -- the ID, which is the Primary Key, cant be null. duh
-	adopt_FName varchar(50) NOT NULL, -- FIRST NAME, cant be null
-	adopt_LName varchar(50) NOT NULL, -- LAST NAME, cant be null
-	adopt_Addr1 varchar(50) NOT NULL, -- address 1, cant be null
-	adopt_Addr2 varchar(50) NOT NULL, -- address 2, cant be null
-  adopt_Email varchar(50) NOT NULL, -- email address, cant be null
-	adopt_PhoneNum varchar(50) NOT NULL, -- phone number, cant be null
-	news_Name_FK varchar(50) NOT NULL, -- news foreign key, cant be null
-	adopt_Em_PhoneNum varchar(50) NOT NULL, -- emergency contact phone number, cant be null
-	adopt_Em_FName varchar(50) NOT NULL, -- emergency contact FIRST NAME, cant be null
-	adopt_Em_LName varchar(50) NOT NULL, -- emergency contact LAST NAME, cant be null
+CREATE TABLE [Adopters](
+    adopt_ID int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    adopt_FName varchar(50) NOT NULL,
+    adopt_LName varchar(50) NOT NULL,
+    adopt_Addr1 varchar(50) NOT NULL,
+    adopt_Addr2 varchar(50) NOT NULL,
+    adopt_Email varchar(50) NOT NULL,
+    adopt_PhoneNum varchar(50) NOT NULL,
+    news_Name_FK varchar(50) NOT NULL,
+    adopt_Em_PhoneNum varchar(50) NOT NULL,
+    adopt_Em_FName varchar(50) NOT NULL,
+    adopt_Em_LName varchar(50) NOT NULL
 );
 
-CREATE TABLE [Newsletters]( -- adopters table
-  news_Name varchar(50) NOT NULL PRIMARY KEY, -- name of the newsletter, primary key
-  news_ID int NOT NULL IDENTITY(1,1), -- news ID
-  news_Email varchar(50) NOT NULL, --email the newsletters will be sent from
-  news_Frequency int NOT NULL, --how many days between releases
-  news_Telemetry bit, --does the newsletter share your email with other newsletters
+CREATE TABLE [Newsletters](
+    news_Name varchar(50) NOT NULL PRIMARY KEY,
+    news_ID int NOT NULL IDENTITY(1,1),
+    news_Email varchar(50) NOT NULL,
+    news_Frequency int NOT NULL,
+    news_Telemetry bit
 );
 
-CREATE TABLE [Adoption]( -- adopters table
-	ad_ID int NOT NULL IDENTITY(1,1) PRIMARY KEY, -- the ID, which is the Primary Key, cant be null. duh
-    adopt_ID_FK int NOT NULL, -- adopter id foreign key
-    cat_Name_FK varchar(50) NOT NULL, -- name of cat theyre choosing 
-    ad_Date date NOT NULL, -- date of adoption, cant be null
-    shelter_Name_FK varchar(50) NOT NULL, --changed this from the framework- makes more sense for there to be information about what shelter the cat is being adopted from here, change if necessary
+CREATE TABLE [Adoption](
+    ad_ID int NOT NULL IDENTITY(1,1) PRIMARY KEY,
+    adopt_ID_FK int NOT NULL,
+    cat_Name_FK varchar(50) NOT NULL,
+    ad_Date date NOT NULL,
+    shelter_Name_FK varchar(50) NOT NULL
 );
 
-CREATE TABLE [Cat]( -- adopters table
-	cat_Name varchar(50) NOT NULL PRIMARY KEY, -- name of cat
-    cat_FurLength varchar(50) NOT NULL, -- cats fur length
-    cat_FurColour varchar(50) NOT NULL, -- colour of the cat
-    cat_Age int NOT NULL, -- adoption id foreign key
-    cat_FriendlyKids bit, -- boolean friendly with kids
-    cat_FriendlyAnimals bit, -- boolean friendly wih animals
-    cat_Healthy bit, -- boolean healthy or not
+CREATE TABLE [Cat](
+    cat_Name varchar(50) NOT NULL PRIMARY KEY,
+    cat_FurLength varchar(50) NOT NULL,
+    cat_FurColour varchar(50) NOT NULL,
+    cat_Age int NOT NULL,
+    cat_FriendlyKids bit,
+    cat_FriendlyAnimals bit,
+    cat_Healthy bit
 );
 
-CREATE TABLE [Shelters]( -- adopters table
-    shelter_Name varchar(50) NOT NULL PRIMARY KEY, -- name of the shelter
-    shelter_Address varchar(50) NOT NULL, -- address of the shelter, only one- change if necessary
+CREATE TABLE [Shelters](
+    shelter_Name varchar(50) NOT NULL PRIMARY KEY,
+    shelter_Address varchar(50) NOT NULL
 );
 
-ALTER TABLE [Adopters] -- alter Adopters to add fk
-ADD FOREIGN KEY (news_Name_FK) REFERENCES Newsletters(news_Name); -- links newsletter foreign key to adopters table
+ALTER TABLE [Adopters]
+ADD FOREIGN KEY (news_Name_FK) REFERENCES Newsletters(news_Name);
 
-ALTER TABLE [Adoption] -- alter Adoption to add fk
-ADD FOREIGN KEY (adopt_ID_FK) REFERENCES Adopters(adopt_ID); -- links adoption table to the id of the adopter
+ALTER TABLE [Adoption]
+ADD FOREIGN KEY (adopt_ID_FK) REFERENCES Adopters(adopt_ID);
 
-ALTER TABLE [Adoption] -- alter Adoption to add fk
-ADD FOREIGN KEY (cat_Name_FK) REFERENCES Cat(cat_Name); -- links adoption table to name of cat being adopted
+ALTER TABLE [Adoption]
+ADD FOREIGN KEY (cat_Name_FK) REFERENCES Cat(cat_Name);
 
-ALTER TABLE [Adoption] -- alter Adoption to add fk
-ADD FOREIGN KEY (shelter_Name_FK) REFERENCES Shelters(shelter_Name); -- links adoption table to location from which the cat is being adopted
+ALTER TABLE [Adoption]
+ADD FOREIGN KEY (shelter_Name_FK) REFERENCES Shelters(shelter_Name);
 
 INSERT INTO Cat(cat_Name,cat_FurLength,cat_FurColour,cat_Age,cat_FriendlyKids,cat_FriendlyAnimals,cat_Healthy)
 VALUES
@@ -84,13 +84,13 @@ VALUES
 ('Dartmouth','889 Industry St'),
 ('Truro','461 Park St');
 
-INSERT INTO Adopters(adopt_FName,adopt_LName,adopt_Addr1,adopt_Addr2,adopt_Email,adopt_PhoneNum,news_ID_FK,adopt_Em_PhoneNum,adopt_Em_FName,adopt_Em_LName)
+INSERT INTO Adopters(adopt_FName,adopt_LName,adopt_Addr1,adopt_Addr2,adopt_Email,adopt_PhoneNum,news_Name_FK,adopt_Em_PhoneNum,adopt_Em_FName,adopt_Em_LName)
 VALUES
-('Abby','Smith','1 Park St','427 Boat Ln','AbbySmith@gmail.com','999-888-1010','Cats','888-999-1010','Ethan','Parker'),
-('Ethan','Wilson','2 Park St','428 Sunflower Ln','EthanWilson@gmail.com','999-888-1011','Dogs','888-999-1011','Beatrice','Kent'),
-('Beatrice','Parker','3 Park St','429 Boat Ln','BeatriceParker@gmail.com','999-888-1100','Cats','888-999-1012','William','Grayson'),
-('William','Kent','4 Park St','430 Leeds Ln','WilliamKent@gmail.com','999-888-1101','Both','888-999-1013','Richard','Smith'),
-('Richard','Grayson','5 Park St','431 Boat Ln','RichardGrayson@gmail.com','999-888-1111','Cats','888-999-1014','Abby','Wilson');
+('Abby','Smith','1 Park St','427 Boat Ln','AbbySmith@gmail.com','999-888-1010','Catatonic over Cats','888-999-1010','Ethan','Parker'),
+('Ethan','Wilson','2 Park St','428 Sunflower Ln','EthanWilson@gmail.com','999-888-1011','Dogged about Dogs','888-999-1011','Beatrice','Kent'),
+('Beatrice','Parker','3 Park St','429 Boat Ln','BeatriceParker@gmail.com','999-888-1100','Catatonic over Cats','888-999-1012','William','Grayson'),
+('William','Kent','4 Park St','430 Leeds Ln','WilliamKent@gmail.com','999-888-1101','Doggedly Catatonic about Cats and Dogs','888-999-1013','Richard','Smith'),
+('Richard','Grayson','5 Park St','431 Boat Ln','RichardGrayson@gmail.com','999-888-1111','Catatonic over Cats','888-999-1014','Abby','Wilson');
 
 INSERT INTO Adoption(adopt_ID_FK,cat_Name_FK,ad_Date,shelter_Name_FK)
 VALUES
